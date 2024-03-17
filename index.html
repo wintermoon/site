@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Wintermoon Framework</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Keywords" content="wintermoon, framework, sdl, opengl, openal, qt, 2d, engine, game, lua, luabind, boost, stl, c++, physicsfs"/>
+    <meta http-equiv="Author" content="Rodrigo Delduca" />
+    <meta name="robots" content="all" />
+    <style type="text/css">
+      pre {
+        font-family: monospace;
+        color: #f6f3e8;
+        background-color: #000000;
+      }
+      body {
+        font-family: monospace;
+        color: #f6f3e8;
+        background-color: #000000;
+      }
+      .Comment {
+        color: #7c7c7c;
+      }
+      .Constant {
+        color: #99cc99;
+      }
+      .String {
+        color: #a8ff60;
+      }
+      .Number {
+        color: #ff73fd;
+      }
+      .Statement {
+        color: #6699cc;
+      }
+      .Type {
+        color: #ffffb6;
+      }
+      div.center {
+        text-align: center;
+      }
+      .image {
+        width: 200px;
+        height: 200px;
+      }
+      a:link,
+      a:visited,
+      a:active {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="center">
+    <img class="image" alt="Wintermoon Framework" src="wintermoon.jpg" />
+  </div>
+  <a href="https://github.com/wintermoon/wintermoon">
+    <img src="forkme.svg" style="position: absolute; top: 0; right: 0" alt="Fork Wintermoon on GitHub"/>
+  </a>
+  <pre>
+  <span class="Type">class</span> Main : <span class="Statement">public</span> Application, <span class="Statement">public</span> EventListener
+  {
+      <span class="Statement">public</span>:
+          <span class="Type">virtual</span> <span class="Type">int</span> main(<span class="Type">const</span> List&lt;String&gt;&amp; args)
+          {
+              root = Root::instance();
+  
+              video = root-&gt;videoManager();
+  
+              input = root-&gt;inputManager();
+  
+              video-&gt;init(Size(<span class="Number">640</span>, <span class="Number">480</span>), <span class="Number">32</span>, <span class="String">&quot;Hello World&quot;</span>, <span class="Constant">false</span>);
+  
+              <span class="Statement">while</span> (root-&gt;running())
+              {
+                  input-&gt;capture();
+  
+                  video-&gt;beginDraw();
+  
+                  <span class="Comment">// draw everthing</span>
+  
+                  video-&gt;endDraw();
+              }
+  
+              <span class="Statement">return</span> <span class="Number">0</span>;
+          }
+  
+      <span class="Statement">protected</span>:
+          <span class="Type">virtual</span> <span class="Type">void</span> quitEvent()
+          {
+              root-&gt;shutdown();
+          }
+  
+      <span class="Statement">private</span>:
+          Root* root;
+          VideoManager* video;
+          InputManager* input;
+  } app;
+  </pre>
+  </body>
+</html>  
